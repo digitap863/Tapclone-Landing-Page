@@ -1,12 +1,13 @@
 <?php
 
 if ( isset( $_POST['email'] ) ) {
+	
 	// Read the form values
 	$success     = false;
 	$senderEmail = isset( $_POST['email'] ) ? preg_replace( '/[^\.\-\_\@a-zA-Z0-9]/', '', $_POST['email'] ) : '';
 
 	//Headers
-	$to       = 'your_email'; // Your Email address goes here.
+	$to       = 'asifsaheer7034@gamil.com'; // Your Email address goes here.
 	$subject  = 'Newslatters';
 	$headers  = 'From: Website Contact Form' . "\r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
