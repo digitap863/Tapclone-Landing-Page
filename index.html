@@ -83,7 +83,7 @@
                     <div class="header-btns d-inline-flex flex-wrap align-items-center">
                         <div class="header-btns d-inline-flex flex-wrap align-items-center">
 
-                            <a class="thm-btn brd-btn rounded-pill d-inline-block" href="#contactuus"title="">Get a
+                            <a class="thm-btn brd-btn rounded-pill d-inline-block" href="#contactuus" title="">Get a
                                 Quote</a>
                         </div>
                     </div>
@@ -384,7 +384,7 @@
                                 </div>
 
                                 <!-- Layer NR. 12 -->
-                               
+
                                 <div class="tp-caption rev-btn thm-btn" id="slide1-layer-12"
                                     data-x="['right','center','center','center']" data-hoffset="['202','0','0','0']"
                                     data-y="['middle','middle','middle','middle']"
@@ -965,25 +965,24 @@
                                         </div><!-- Sec Title -->
                                         <p class="mb-0">We will call you in 20 mins. We answer all questions and tell
                                             about our services.</p>
-                                        <form class="w-100" action="https://sheetdb.io/api/v1/aznbuf5srqy2s"
-                                            method="post" id="sheetdb-form">
+                                        <form class="w-100" id="loginform">
                                             <div class="form-group w-100">
                                                 <div class="response w-100"></div>
                                             </div>
                                             <div class="field-box w-100">
-                                                <input class="fname" type="text" name="data[name]"
+                                                <input class="fname" type="text" name="name"
                                                     placeholder="What is your name" required>
                                             </div>
                                             <div class="field-box w-100">
-                                                <input class="phone" type="tel" name="data[phone]"
-                                                    placeholder="Phone number" required>
+                                                <input class="phone" type="tel" name="phone" placeholder="Phone number"
+                                                    required>
                                             </div>
                                             <div class="field-box w-100">
-                                                <input class="ctime" type="text" name="data[ctime]"
+                                                <input class="ctime" type="text" name="ctime"
                                                     placeholder="Best time to call" required>
                                             </div>
                                             <div class="field-btn w-100">
-                                                <button class="thm-btn d-inline-block rounded-pill" id="submit"
+                                                <button class="thm-btn d-inline-block rounded-pill" id="sub"
                                                     type="submit">Call Me</button>
                                             </div>
                                         </form>
@@ -1118,17 +1117,23 @@
         </div><!-- Bottom Bar -->
     </main><!-- Main Wrapper -->
     <script>
-        var form = document.getElementById('sheetdb-from');
-        form.addEventListener("submit", e => {
-            e.preventDefault();
-            fetch(form.action, {
-                method: "POST",
-                body: new FormData(document.getElementById("sheetdb-from")),
-            }).then(response => response.json()
-            ).then((html) => {
-              window.location.reload()
+        var form = document.getElementById('loginform');
+        if (form) {
+            form.addEventListener("submit", (e) => {
+
+                e.preventDefault();
+                document.querySelector("#sub").value = "submiting..."
+                let data = new FormData(form)
+                fetch("https://script.google.com/macros/s/AKfycbzXK_qEfJXLpCO69nNwYMPELaqxUJyo-QL0eoWxN2QhxO4jQSoABPLgPi4mkhsAm-w/exec", {
+                    method: "POST",
+                    body: data,
+                }).then((response) => window.location.reload()
+                )
+                    .then((html) => {
+                        window.location.reload()
+                    })
             })
-        })
+        }
     </script>
 
     <script src="assets/js/jquery.min.js"></script>
